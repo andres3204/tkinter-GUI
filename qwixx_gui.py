@@ -4,6 +4,7 @@
 
 import tkinter as tk
 from tkinter import Menu
+from PIL import Image, ImageTk
 
 def exit():
     root.destroy()
@@ -12,7 +13,7 @@ def exit():
 root = tk.Tk()
 root.title("Qwixx Game")
 root.geometry("900x400")
-root.resizable(False, False)
+#root.resizable(False, False)
 
 # Menu
 menuBar = Menu(root)
@@ -57,7 +58,7 @@ for index, color in enumerate(colors2):
 
     # Number in boxes for those rows. Logic with help from AI.
     for i in range(12, 1, -1):
-        numberBox = tk.Button(rowFrame, text=str(i), width=2, bg=color, fg="black")
+        numberBox = tk.Button(rowFrame, text=str(i), width=2, relief="solid", bg=color, fg="black")
         numberBox.pack(side="left", padx=2)
     
     # Add lock button for two last rows
@@ -67,6 +68,12 @@ for index, color in enumerate(colors2):
 # Add penalties section on the right
 penaltyFrame = tk.Frame(frame)
 penaltyFrame.grid(row=6, column=0, columnspan=4, padx=20, pady=5, sticky="ne")
+
+image = Image.open("score.png")
+resizedImage = image.resize((560, 100), Image.LANCZOS)
+photo = ImageTk.PhotoImage(resizedImage)
+imgLabel = tk.Label(penaltyFrame, image=photo)
+imgLabel.pack(pady=5, side="left")
 
 # Penalties Label
 penaltyLabel = tk.Label(penaltyFrame, text="Penalties")
