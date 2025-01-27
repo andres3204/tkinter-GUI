@@ -11,7 +11,7 @@ def exit():
 #intialize root
 root = tk.Tk()
 root.title("Qwixx Game")
-root.geometry("800x400")
+root.geometry("900x400")
 root.resizable(False, False)
 
 # Menu
@@ -40,12 +40,11 @@ for index, color in enumerate(colors):
 
     # Number in boxes for that row
     for i in range(2, 13):
-        numberBox = tk.Entry(rowFrame, width=3, justify="center")
+        numberBox = tk.Button(rowFrame, text=str(i), width=2, relief="solid", bg=color, fg="black")
         numberBox.pack(side="left", padx=2)
-        numberBox.insert(0, str(i))
     
     # Add lock button for first two rows
-    lockButton = tk.Button(rowFrame, text="🔒", bg=color)
+    lockButton = tk.Button(rowFrame, text="🔒", bg=color, activebackground="lightgray")
     lockButton.pack(side="left", padx=5)
 
 for index, color in enumerate(colors2):
@@ -58,9 +57,8 @@ for index, color in enumerate(colors2):
 
     # Number in boxes for those rows. Logic with help from AI.
     for i in range(12, 1, -1):
-        numberBox = tk.Entry(rowFrame, width=3, justify="center")
+        numberBox = tk.Button(rowFrame, text=str(i), width=2, bg=color, fg="black")
         numberBox.pack(side="left", padx=2)
-        numberBox.insert(0, str(i))
     
     # Add lock button for two last rows
     lockButton = tk.Button(rowFrame, text="🔒", bg=color, activebackground="lightgray")
