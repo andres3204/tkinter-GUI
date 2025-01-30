@@ -111,6 +111,5 @@ for i in range(6):
     else:
         SyntaxError
 
-
 # Run App
 root.mainloop()
